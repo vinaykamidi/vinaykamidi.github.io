@@ -13,7 +13,7 @@
 	  <title>Vinay R Kamidi / Roboticist</title>
 
 
-	  <link rel="stylesheet" href="css/ref.css">
+	  <link rel="stylesheet" href="css/pubs.css">
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -23,7 +23,6 @@
 	<body>
 
 			<div class="vcard__menu">
-
 				<header>
 					<div class="container">
 						<div class="vcard__tag">
@@ -43,8 +42,6 @@
 				</header>
 			</div>
 
-
-
 			<div id="left">
 				<div class="info-footer__social">
 					<a href="https://github.com/vinaykamidi" target="_blank" class="fa fa-github info-footer__social-icon--github" style="font-size:22px"></a>
@@ -54,10 +51,10 @@
 						<span class="tooltiptext"><a href="mailto:vinay28@vt.edu"> vinay28@vt.edu</a></span>
 					<a href="mailto:vinay28@vt.edu" class="material-icons info-footer__social-icon--email" style="font-size:22px"> &#xe0be;</a>
 					</div>
-
-
 				</div>
 			</div>
+
+
 			<div id="right"></div>
 			<div id="top">
 				<div class="full__menu">
@@ -66,6 +63,7 @@
 							<div class="name__tag">
 								<a href="http://vinaykamidi.me/">Vinay R Kamidi.</a>
 							</div>
+
 							<nav class="full__nav">
 								<ul>
 									<li><a href="index.html" class="three-d">Resume
@@ -98,36 +96,33 @@
 					<div class="footer__text">
 	       		<a class="footer__text--copyright"> &#169; 2018 <a class="footer__text--copyright-link" href="http://vinaykamidi.me/">Vinay R Kamidi.</a><a class="footer__text--copyright"> All rights reserved</a>
 					</div>
-
 				</div>
 			</div>
 
-			<div class="main">
-				<div class="icons">
-					<ul id=menu>
-						<li><a href="https://github.com/vinaykamidi" target="_blank" class="fa fa-github info-footer__social-icon--github" style="font-size:22px"></a>
-						<li><a href="https://www.linkedin.com/in/vkamidi/" target="_blank" class="fa fa-linkedin-square info-footer__social-icon--linkedin" style="font-size:22px"></a>
-						<li><a href="https://scholar.google.com/citations?user=ROo4UWoAAAAJ&hl=en" target="_blank" class="material-icons info-footer__social-icon--scholar" style="font-size:22px"> &#xe80c; </a>
-						<li><div class="tooltip">
-							<span class="tooltiptext"><a href="mailto:vinay28@vt.edu"> vinay28@vt.edu</a></span>
-						<a href="mailto:vinay28@vt.edu" class="material-icons info-footer__social-icon--email" style="font-size:22px"> &#xe0be;</a>
-						</div>
-					</ul>
-				</div>
-				<div class="content">
 
-					<div class="main__container-resume">
-						Coming Soon. Hang Tight!
+				<div class="main">
+					<div class="icons">
+						<ul id=menu>
+							<li><a href="https://github.com/vinaykamidi" target="_blank" class="fa fa-github info-footer__social-icon--github" style="font-size:22px"></a>
+							<li><a href="https://www.linkedin.com/in/vkamidi/" target="_blank" class="fa fa-linkedin-square info-footer__social-icon--linkedin" style="font-size:22px"></a>
+							<li><a href="https://scholar.google.com/citations?user=ROo4UWoAAAAJ&hl=en" target="_blank" class="material-icons info-footer__social-icon--scholar" style="font-size:22px"> &#xe80c; </a>
+								<li><div class="tooltip">
+									<span class="tooltiptext"><a href="mailto:vinay28@vt.edu"> vinay28@vt.edu</a></span>
+								<a href="mailto:vinay28@vt.edu" class="material-icons info-footer__social-icon--email" style="font-size:22px"> &#xe0be;</a>
+								</div>
+						</ul>
 					</div>
 
-				</div>
+					<div class="content">
+						<div class="main__container-resume">
+							Coming Soon. Hang Tight!
+						</div>
+
+					</div>
+
 			</div>
 
-			<div class="vcard__footer">
-				<div class="footer__text">
-					<a class="footer__text--copyright"> &#169; 2018 <a class="footer__text--copyright-link" href="http://vinaykamidi.me/">Vinay R Kamidi.</a><a class="footer__text--copyright"> All rights reserved</a>
-				</div>
-			</div>
+
 
 
 			<script>
@@ -144,6 +139,84 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	    <!-- Custom scripts for this template -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
 	    <script src="js/click.js"></script>
+			<script>
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+
+			for (i = 0; i < acc.length; i++) {
+			    acc[i].addEventListener("click", function() {
+			        this.classList.toggle("active");
+			        var panel = this.nextElementSibling;
+			        if (panel.style.display === "block") {
+			            panel.style.display = "none";
+			        } else {
+			            panel.style.display = "block";
+			        }
+			    });
+			}
+			</script>
+
+			<script>
+			var options = {
+			  valueNames: [ 'conference','category','year','status']
+			};
+
+
+
+			var userList = new List('users', options);
+			$('.filter-1').on('click', function(item) {
+			  userList.filter();
+			});
+
+
+			$('.filter-2').on('click', function() {
+	  		userList.filter(function(item) {
+			    if ( item.values().category == "Conference") {
+			      return true;
+			    } else {
+			      return false;
+			    }
+			  });
+			});
+
+			var filterButton = document.getElementById("filter-3");
+
+			filterButton.addEventListener("click", function() {
+			  userList.filter(function(item) {
+			    if (item.values().category == "Journal") {
+			      return true;
+			    } else {
+			      return false;
+			    }
+			  });
+			});
+
+			var filterButton = document.getElementById("filter-4");
+
+			filterButton.addEventListener("click", function() {
+				userList.filter(function(item) {
+					if (item.values().status == "Submitted") {
+						return true;
+					} else {
+						return false;
+					}
+				});
+			});
+
+			var filterButton = document.getElementById("filter-5");
+
+			filterButton.addEventListener("click", function() {
+				userList.filter(function(item) {
+					if (item.values().status == "Accepted") {
+						return true;
+					} else {
+						return false;
+					}
+				});
+			});
+			</script>
 	</body>
 </html>
