@@ -1,1 +1,1 @@
-# vinaykamidi.github.io
+# vkamidi
