@@ -460,9 +460,9 @@ padding: 0px 10px;
 }
 
 .info-footer__social {
-  position: absolute;
+  position: relative;
   max-width: 35px;
-  bottom: 230px;
+  top: 400px;
   height: 170px; }
 
   .info-footer__social-icon, .vcard__icon--menu, .info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--scholar {
