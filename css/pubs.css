@@ -459,14 +459,16 @@ padding: 0px 10px;
 
 }
 
-.info-footer__social {
-  position: relative;
-  max-width: 35px;
-  top: 400px;
-  height: 170px;
+@media (min-width:  1024px){
+  .info-footer__social {
+    position: relative;
+    max-width: 35px;
+    top: 400px;
+    height: 170px;
+  }
 }
 
-@media (min-width: 768px) and (max-width: : 1024px) and (orientation: landscape){
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
   .info-footer__social{
     top: 200px;
   }
