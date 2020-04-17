@@ -167,7 +167,11 @@ h2 {
   position: relative;
   width: 100%;
   min-height: 590px;
-  background-color: #F6F3F1; }
+  background-color: #F6F3F1;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000000;
+}
 
   @media (min-width: 768px) {
     .vcard {
@@ -263,7 +267,7 @@ h2 {
 
 .main__menu{
   position: fixed;
-  width: 59.4%;
+  width: 60%;
   z-index: 100;
   min-height: 45px;
   background: #ECC090;
@@ -410,6 +414,9 @@ h2 {
   display: inline-block;
   padding: 0px 0px 0px 0px;
   background-color: #4365CD;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000000;
   }
   @media (min-width: 768px) {
     .resume {
@@ -520,7 +527,7 @@ h2 {
 
       .info-footer__social {
         position: absolute;
-        right: 20px;
+        right: 38px;
         bottom: 28px;
         height: 27px; }
         .info-footer__social-icon, .vcard__icon--menu, .info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--scholar {
