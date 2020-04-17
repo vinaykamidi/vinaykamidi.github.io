@@ -463,7 +463,14 @@ padding: 0px 10px;
   position: relative;
   max-width: 35px;
   top: 400px;
-  height: 170px; }
+  height: 170px;
+}
+
+@media (min-width: 768px) and (max-width: : 1024px) and (orientation: landscape){
+  .info-footer__social{
+    top: 200px;
+  }
+}
 
   .info-footer__social-icon, .vcard__icon--menu, .info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--scholar {
     float: center;
