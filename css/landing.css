@@ -413,6 +413,7 @@ h2 {
 .resume {
   display: inline-block;
   padding: 0px 0px 0px 0px;
+  width: 100%;
   background-color: #4365CD;
   border-style: solid;
   border-width: 5px;
