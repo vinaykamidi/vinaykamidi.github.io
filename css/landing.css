@@ -56,7 +56,7 @@ h2 {
     #tag, .info__name, .main__tag {
       margin: 5px 30px 0 0; } }
 
-#fadeUp-animation, .info-footer__kitchener, .info-footer__social-icon, .info-footer__social-icon--pdf,.info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--scholar, .main__container-about, .main__container-projects, .main__container-clients, .main__container-experience, .main__container-resume, .main__resume {
+#fadeUp-animation, .info-footer__kitchener, .info-footer__social-icon, .info-footer__social-icon--pdf,.info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--youtube, .info-footer__social-icon--scholar, .main__container-about, .main__container-projects, .main__container-clients, .main__container-experience, .main__container-resume, .main__resume {
   opacity: 0;
   animation: fadeUp ease-in 1;
   animation-fill-mode: forwards;
@@ -531,7 +531,7 @@ h2 {
         right: 38px;
         bottom: 28px;
         height: 27px; }
-        .info-footer__social-icon, .vcard__icon--menu, .info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--github, .info-footer__social-icon--scholar {
+        .info-footer__social-icon, .vcard__icon--menu, .info-footer__social-icon--email, .info-footer__social-icon--linkedin, .info-footer__social-icon--youtube, .info-footer__social-icon--github, .info-footer__social-icon--scholar {
           float: right;
           margin-left: 18px;
           padding-top: 4px;
@@ -558,11 +558,16 @@ h2 {
             @media (max-width: 768px) {
               .info-footer__social-icon--linkedin {
                 animation-delay: 1.2s; } }
+          .info-footer__social-icon--youtube {
+            animation-delay: 2.0s; }
+            @media (max-width: 768px) {
+              .info-footer__social-icon--youtube {
+                animation-delay: 1.4s; } }
           .info-footer__social-icon--github {
             animation-delay: 2.2s; }
             @media (max-width: 768px) {
               .info-footer__social-icon--github {
-                animation-delay: 1.4s; } }
+                animation-delay: 1.6s; } }
                 .info-footer__social-icon--pdf {
                   animation-delay: 2.6s; }
                   @media (max-width: 768px) {
@@ -597,6 +602,11 @@ h2 {
                 }
                 .info-footer__social-icon--scholar:hover{
                   color: #3e65cf;
+                  text-shadow: 0 0 15px #3b5998;
+                  transition: all 0.5s ease;
+                }
+                .info-footer__social-icon--youtube:hover{
+                  color: #FF0000;
                   text-shadow: 0 0 15px #3b5998;
                   transition: all 0.5s ease;
                 }
