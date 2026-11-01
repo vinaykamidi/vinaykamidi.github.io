@@ -1,0 +1,112 @@
+{
+ "joints": [
+  {
+   "name": "FR_hip_joint",
+   "body": "FR_hip",
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "FR_thigh_joint",
+   "body": "FR_thigh",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "FR_calf_joint",
+   "body": "FR_calf",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "FL_hip_joint",
+   "body": "FL_hip",
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "FL_thigh_joint",
+   "body": "FL_thigh",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "FL_calf_joint",
+   "body": "FL_calf",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RR_hip_joint",
+   "body": "RR_hip",
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RR_thigh_joint",
+   "body": "RR_thigh",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RR_calf_joint",
+   "body": "RR_calf",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RL_hip_joint",
+   "body": "RL_hip",
+   "axis": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RL_thigh_joint",
+   "body": "RL_thigh",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "name": "RL_calf_joint",
+   "body": "RL_calf",
+   "axis": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  }
+ ]
+}

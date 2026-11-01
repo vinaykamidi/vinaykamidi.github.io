@@ -1,150 +1,342 @@
 <!doctype html>
-
-
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vinay R. Kamidi — Roboticist</title>
+  <meta name="description" content="Vinay R. Kamidi, roboticist working on legged and humanoid robots. New website coming soon.">
+  <meta name="author" content="Vinay R. Kamidi">
+  <meta property="og:title" content="Vinay R. Kamidi — Roboticist">
+  <meta property="og:description" content="Roboticist working on legged and humanoid robots. New website coming soon.">
+  <meta property="og:image" content="https://vinaykamidi.github.io/img/vinay.jpg">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://vinaykamidi.github.io/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,400&display=swap">
 
-	<head>
+  <!--
+    HOW TO UPDATE THIS PAGE
+    - Everything is in this one file. Each section below is marked with a banner comment.
+    - New paper: copy one <div class="pub"> block and edit it. Papers with a YouTube video
+      use the video's thumbnail (https://i.ytimg.com/vi/<VIDEO_ID>/hqdefault.jpg);
+      papers without one use <div class="tile">VENUE YEAR</div>.
+    - New job: copy one <div class="job"> block in Experience.
+  -->
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<meta name="description" content="Vinay R Kamidi">
-	  <meta name="author" content="Vinay R Kamidi">
+  <style>
+    /* Palette carried over from the original site */
+    :root {
+      --frame: 35px;            /* width of the sticky border on all four sides */
+      --cream: #F6F3F1;
+      --rust:  #A55D41;
+      --blue:  #4365CD;
+      --peach: #ECC090;
+      --ink:   #313131;
+      --muted: #6b6461;
+      --paper: #FFFDFB;
+      --line:  #E7DFD9;
+      --font: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--rust); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    [hidden] { display: none !important; }
 
-	  <title> Vinay R. Kamidi. </title>
+    /* The frame: four fixed edges, like the old Publications page */
+    .edge { position: fixed; background: var(--cream); z-index: 10; }
+    .edge--top, .edge--bottom { left: 0; right: 0; height: var(--frame); }
+    .edge--left, .edge--right { top: 0; bottom: 0; width: var(--frame); }
+    .edge--top { top: 0; } .edge--bottom { bottom: 0; }
+    .edge--left { left: 0; } .edge--right { right: 0; }
+
+    .edge--top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--frame); gap: 16px;
+    }
+    .brand { font-weight: 700; color: var(--rust); white-space: nowrap; font-size: 15px; }
+    .brand:hover { text-decoration: none; }
+    .nav { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      font-size: 12.5px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--rust); white-space: nowrap;
+      padding: 2px 0; border-bottom: 2px solid transparent;
+    }
+    .nav a:hover, .nav a.is-active { text-decoration: none; border-bottom-color: var(--rust); }
+
+    /* Profile icons: bottom border, centered, on every device */
+    .edge--bottom { display: flex; align-items: center; justify-content: center; }
+    .social { display: flex; align-items: center; gap: 28px; }
+    .social a {
+      position: relative; color: var(--rust); font-size: 18px; line-height: 1; padding: 4px;
+      transition: color .15s, transform .15s;
+    }
+    .social a:hover, .social a:focus-visible { text-decoration: none; color: var(--brand, var(--blue)); transform: translateY(-1px); }
+    /* Email: the envelope swaps to a gradient Gmail "M" on hover */
+    .social a.gmail svg { display: none; width: 1.15em; height: 1.15em; }
+    .social a.gmail:hover i, .social a.gmail:focus-visible i { display: none; }
+    .social a.gmail:hover svg, .social a.gmail:focus-visible svg { display: block; }
+
+    /* Small label above each icon, only on devices with a mouse */
+    @media (hover: hover) {
+      .social a::after {
+        content: attr(data-label);
+        position: absolute; bottom: calc(100% + 10px); left: 50%;
+        transform: translate(-50%, 4px);
+        padding: 5px 10px; border-radius: 6px;
+        background: var(--ink); color: #fff;
+        font: 600 12px/1.2 var(--font); letter-spacing: .02em; white-space: nowrap;
+        opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s;
+      }
+      .social a:hover::after, .social a:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    /* Copyright: a quiet line at the very end of the page */
+    .endnote {
+      text-align: center; margin: 40px 0 0; font-size: 12.5px; font-weight: 600;
+      color: rgba(255,255,255,.8); letter-spacing: .03em;
+    }
+
+    /* The blueprint panel inside the frame */
+    .panel {
+      margin: var(--frame);
+      min-height: calc(100vh - 2 * var(--frame));
+      background-color: var(--blue);
+      background-image:
+        linear-gradient(rgba(255,255,255,.17) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.17) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      padding: 0 24px 72px;
+    }
+
+    /* Hero, directly on the grid */
+    .hero {
+      min-height: min(calc(100vh - 2 * var(--frame)), 860px);
+      max-width: 880px; margin: 0 auto;
+      display: flex; flex-direction: column; justify-content: center;
+      color: #fff; padding: 72px 0 56px;
+    }
+    .hero__top { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .headshot {
+      width: 148px; height: 148px; border-radius: 50%; object-fit: cover;
+      border: 4px solid rgba(255,255,255,.9); box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      flex: none;
+    }
+    .hero h1 {
+      font-size: clamp(29px, 6vw, 64px); font-weight: 200; letter-spacing: -.01em;
+      line-height: 1.05; margin: 0 0 10px;
+    }
+    .hero .role {
+      font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--peach); margin: 0;
+    }
+    .hero .bio {
+      font-size: clamp(17px, 2vw, 19.5px); font-weight: 300; line-height: 1.65;
+      max-width: 760px; margin: 36px 0 0; color: rgba(255,255,255,.95);
+    }
+    .hero .bio a { color: #fff; border-bottom: 1px solid rgba(255,255,255,.5); }
+    .hero .bio a:hover { text-decoration: none; border-bottom-color: #fff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 10px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 600;
+      background: var(--cream); color: var(--rust);
+    }
+    .btn--ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.7); }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+    /* White sheets laid on the blueprint for everything below the hero */
+    .sheet {
+      max-width: 940px; margin: 0 auto 28px;
+      background: var(--paper); border-radius: 6px;
+      padding: 44px clamp(20px, 5vw, 56px);
+      box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 32px rgba(18,30,80,.22);
+      scroll-margin-top: calc(var(--frame) + 16px);
+    }
+    .sheet h2 {
+      margin: 0 0 6px; font-size: 13px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--rust);
+    }
+    .sheet .lede { margin: 0 0 28px; color: var(--muted); font-size: 15px; }
+    .sheet h3.group {
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); margin: 36px 0 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    }
+
+    /* Robots: video cards */
+    .robots { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+    .robot { color: var(--ink); }
+    .robot:hover { text-decoration: none; }
+    .thumb {
+      position: relative; aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden;
+      background: var(--blue);
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .thumb::after {
+      content: "\f04b"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+      position: absolute; inset: 0; display: grid; place-items: center;
+      color: #fff; font-size: 22px; text-shadow: 0 2px 8px rgba(0,0,0,.5);
+      opacity: .9;
+    }
+    .robot:hover .thumb img, .pub__media a:hover img { transform: scale(1.04); }
+    .robot__name { display: block; font-weight: 700; margin-top: 10px; font-size: 15px; }
+    .robot__meta { display: block; color: var(--muted); font-size: 13.5px; }
+    .thumb--drawing::after { content: none; }
+    .thumb--drawing svg { width: 100%; height: 100%; display: block; transition: transform .3s; }
+    .robot:hover .thumb--drawing svg { transform: scale(1.04); }
 
 
-	  <link rel="stylesheet" href="css/landing.css">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<script src="https://unicons.iconscout.com/release/v2.1.3/script/monochrome/bundle.js"/></script>
-		</head>
+    /* Experience */
+    .job { display: grid; grid-template-columns: 170px 1fr; gap: 6px 28px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .lede + .job, .group + .job { border-top: 0; }
+    .job__when { color: var(--muted); font-size: 13.5px; padding-top: 2px; font-variant-numeric: tabular-nums; }
+    .job__title { font-weight: 700; margin: 0; font-size: 16px; }
+    .job__org { color: var(--rust); font-weight: 600; }
+    .job__where { color: var(--muted); font-weight: 400; }
+    .job p { margin: 6px 0 0; font-size: 15px; }
+    .job p.job__title { margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tags span {
+      font-size: 12px; padding: 2px 9px; border-radius: 999px;
+      background: #EEF1FB; color: #2f4aa3;
+    }
 
-	<body>
-		<div class="vcard">
-				<div class="vcard__menu">
-					<header>
-						<div class="container">
-							<nav class="site__nav">
-								<ul>
-									<li><a href="index.html">Resume</li></a>
-									<li><a href="pubs.html">Publications</li></a>
-									<li><a href="research.html">Research</li></a>
-								</ul>
-							</nav>
-							<div class="menu__toggle">
-								<div class="click__icon"></div>
-							</div>
-						</div>
-					</header>
-				</div>
-			  <div class="info-main">
-				<div class="info__headshot"><img class="info__headshot-img" src="img\vinay.jpg"></div>
-				<div class="info__name">Vinay R. Kamidi- Roboticist / Mechanical Engineer</div>
-				<div class="info__elevator">
-				</div>
-			</div>
-				<div class="info-footer">
-					<div class="info-footer__kitchener">
-					</div>
-					<div class="info-footer__social">
-						<i href="https://github.com/vinaykamidi" class="uil uil-github" style="font-size:24px"></i>
-						<a href="https://github.com/vinaykamidi" target="_blank" class="fa fa-github info-footer__social-icon--github" style="font-size:24px"></a>
-						<a href="https://www.youtube.com/channel/UComeXSa3wP-8zMeutYwN7yA" target="_blank" class="fa fa-youtube-play info-footer__social-icon--youtube" style="font-size:22px"></a>
-						<a href="https://www.linkedin.com/in/vkamidi/" target="_blank" class="fa fa-linkedin-square info-footer__social-icon--linkedin" style="font-size:24px"></a>
-						<a href="https://scholar.google.com/citations?user=ROo4UWoAAAAJ&hl=en" target="_blank" class="material-icons info-footer__social-icon--scholar" style="font-size:24px"> &#xe80c; </a>
-						<div class="tooltip">
-					  <span class="tooltiptext"><a href="mailto:vinay28@vt.edu"> vinay28@vt.edu</a>
-					  </span>
-						<a href="mailto:vinay28@vt.edu" class="material-icons info-footer__social-icon--email" style="font-size:24px"> &#xe0be; </a>
-					</div>
-				</div>
+    /* Publications: one row per paper, thumbnail on the left (Jon Barron style) */
+    .pub { display: grid; grid-template-columns: 180px 1fr; gap: 22px; padding: 20px 0; border-top: 1px solid var(--line); align-items: start; }
+    .group + .pub { border-top: 0; }
+    .pub__media a { display: block; }
+    .tile {
+      aspect-ratio: 16 / 9; border-radius: 4px;
+      background-color: var(--blue);
+      background-image:
+        linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+      background-size: 16px 16px;
+      color: #fff; display: grid; place-items: center;
+      font-weight: 700; letter-spacing: .08em; font-size: 14px;
+    }
+    .pub__title { font-weight: 700; font-size: 16px; line-height: 1.4; margin: 0 0 4px; color: var(--ink); }
+    .pub__authors { font-size: 14.5px; margin: 0; }
+    .pub__authors b { color: var(--ink); }
+    .pub__venue { font-size: 14.5px; margin: 2px 0 0; color: var(--muted); }
+    .pub__venue em { color: var(--ink); }
+    .pub__links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; font-weight: 600; }
+    .pub__links i { margin-right: 4px; }
+    .note { font-size: 13px; color: var(--muted); }
 
-				<div class="vcard-footer__location">
-					<div class="tooltip">
-				  <span class="tooltiptext1"><a href="#"> Download CV</a>
-				  </span>
-					<a class="material-icons info-footer__social-icon--pdf" style="font-size:24px">&#xe415;</a>
-				</div>
-			</div>
-			</div>
-		</div>
+    .plain { list-style: none; padding: 0; margin: 0; }
+    .plain li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
+    .plain li:first-child { border-top: 0; }
+    .plain .src { font-weight: 700; color: var(--ink); }
+    .plain .date { color: var(--muted); font-size: 13.5px; white-space: nowrap; }
 
+    .service p { margin: 0 0 14px; font-size: 15px; }
+    .service b { display: block; font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .04em; margin-bottom: 2px; }
 
-		<div class="resume">
+    /* Phones: slimmer side borders; taller top and bottom bars for easy tapping */
+    @media (max-width: 760px) {
+      :root { --frame: 20px; }
+      .edge--top { height: 44px; padding: 0 var(--frame); }
+      .edge--bottom { height: 44px; padding-bottom: env(safe-area-inset-bottom, 0px); box-sizing: content-box; }
+      .social { gap: 34px; }
+      .social a { font-size: 21px; }
+      .brand { display: none; }
+      .nav { gap: 16px; width: 100%; justify-content: space-between; }
+      .panel { margin: 44px var(--frame) calc(44px + env(safe-area-inset-bottom, 0px)); padding: 0 0 56px; min-height: calc(100vh - 88px); }
+      .hero { min-height: auto; padding: 56px 20px 48px; }
+      .sheet { margin: 0 10px 20px; border-radius: 4px; scroll-margin-top: 56px; }
+      .headshot { width: 112px; height: 112px; }
+      .robots { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .robot__name { font-size: 14px; }
+      .robot__meta { font-size: 12.5px; }
+      .job { grid-template-columns: 1fr; }
+      .pub { grid-template-columns: 1fr; gap: 12px; }
+      .pub__media { max-width: 320px; }
+    }
+    @media (max-width: 420px) { .nav a { font-size: 11px; letter-spacing: .03em; } .nav { gap: 10px; } }
 
-			<div class="main__menu">
-				<header>
-					<div class="container">
-						<nav class="main__nav">
-							<ul>
-								<li><a href="index.html" class="three-d">Resume
-									<span aria-hidden="true" class="three-d-box">
-										<span class="front">Resume</span>
-										<span class="back">Resume</span>
-									</span>
-								</li></a>
-								<li><a href="pubs.html" class="three-d">Publications
-									<span aria-hidden="true" class="three-d-box">
-										<span class="front">Publications</span>
-										<span class="back">Publications</span>
-									</span>
-								</li></a>
-								<li><a href="research.html" class="three-d">Research
-									<span aria-hidden="true" class="three-d-box">
-										<span class="front">Research</span>
-										<span class="back">Research</span>
-									</span>
-								</li></a>
-							</ul>
-						</nav>
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    /* 3D robots walking inside the bottom bar (bar3d/bar3d.js) */
+    #bar3d { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: calc(100% + 90px); z-index: 0; pointer-events: none; }
+    .edge--bottom .social { position: relative; z-index: 1; }
+    /* Coming-soon page: one screen, no scrolling (the robots walk on a timer instead) */
+    .panel { padding-bottom: 0 !important; }
+    .hero { box-sizing: border-box; min-height: calc(100vh - 2 * var(--frame)); }
+    .soon { opacity: .85; letter-spacing: .02em; }
+    @media (max-width: 760px) {
+      .brand { display: inline; }
+      .hero { min-height: calc(100vh - 88px - env(safe-area-inset-bottom, 0px)); justify-content: center; }
+    }
+  </style>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
 
-					</div>
-				</header>
-			</div>
+<body>
+  <!-- ==================== the sticky frame ==================== -->
+  <header class="edge edge--top">
+    <a class="brand" href="./">Vinay R. Kamidi.</a>
+  </header>
 
-			<a name="top-desktop"></a>
-			<div class="main__container-about">
+  <div class="edge edge--left" aria-hidden="true"></div>
+  <div class="edge edge--right" aria-hidden="true"></div>
+  <!-- Profile icons: bottom border, centered, on every device -->
+  <footer class="edge edge--bottom">
+    <nav class="social" aria-label="Profiles">
+      <!-- data-label = hover label; --brand = hover color -->
+      <a class="gmail" href="mailto:vinayredde@gmail.com" aria-label="Email" data-label="vinayredde@gmail.com"><i class="fa-solid fa-envelope"></i><svg viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <linearGradient id="gm-left" x1="0" y1="5" x2="0" y2="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F4568B"/><stop offset="1" stop-color="#EA4335"/></linearGradient>
+            <linearGradient id="gm-right" x1="12" y1="13" x2="20" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F26B21"/><stop offset=".2" stop-color="#FBBC05"/><stop offset=".6" stop-color="#34A853"/><stop offset="1" stop-color="#4285F4"/></linearGradient>
+          </defs>
+          <path d="M4.5 19.5V6.5L12 12.5" fill="none" stroke="url(#gm-left)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 12.5L19.5 6.5V19.5" fill="none" stroke="url(#gm-right)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></a>
+      <!-- CV: delete the word "hidden" below once cv/Vinay_R_Kamidi_CV.pdf is added -->
+      <a href="cv/Vinay_R_Kamidi_CV.pdf" target="_blank" rel="noopener" aria-label="CV (PDF)" data-label="CV (PDF)" style="--brand:#D93025" hidden><i class="fa-solid fa-file-pdf"></i></a>
+      <a href="https://scholar.google.com/citations?user=ROo4UWoAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" data-label="Google Scholar" style="--brand:#4285F4"><i class="fa-solid fa-graduation-cap"></i></a>
+      <a href="https://www.youtube.com/channel/UComeXSa3wP-8zMeutYwN7yA" target="_blank" rel="noopener" aria-label="YouTube" data-label="YouTube" style="--brand:#FF0000"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.linkedin.com/in/vkamidi/" target="_blank" rel="noopener" aria-label="LinkedIn" data-label="LinkedIn" style="--brand:#0A66C2"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/vinaykamidi" target="_blank" rel="noopener" aria-label="GitHub" data-label="GitHub" style="--brand:#181717"><i class="fa-brands fa-github"></i></a>
+    </nav>
+    <canvas id="bar3d" aria-hidden="true"></canvas>
+  </footer>
 
+  <!-- ==================== the blueprint panel ==================== -->
+  <main class="panel">
+    <section class="hero" id="about">
+      <div class="hero__top">
+        <img class="headshot" src="img/vinay.jpg" alt="Portrait of Vinay R. Kamidi" width="148" height="148">
+        <div>
+          <h1>Vinay R. Kamidi</h1>
+          <p class="role">Roboticist · legged and humanoid robots</p>
+        </div>
+      </div>
+      <p class="bio soon">New website coming soon.</p>
+    </section>
+  </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="main__container-resume">
-				Coming Soon. Hang Tight!
-			</div>
-
-
-
-		</div>
-
-
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-72566018-1', 'auto');
-		  ga('send', 'pageview');
-		</script>
-
-		<!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="js/click.js"></script>
-
-		</body>
-
+  <script>
+    // Load the 3D bar only after the page itself has finished loading.
+    addEventListener('load', function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script'); s.type = 'module'; s.src = 'bar3d/bar3d.js'; document.body.appendChild(s);
+    });
+  </script>
+</body>
 </html>
